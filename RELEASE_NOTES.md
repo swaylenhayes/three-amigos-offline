@@ -1,4 +1,16 @@
-# 📦 Dos Amigos Offline Release Notes
+# 📦 Three Amigos Offline Release Notes
+
+## v1.3.0 — 2025-12-04
+- Project renamed to **Three Amigos Offline**; release artifacts use the `three-amigos-offline-v1.3.*` naming.
+- All three MLX Whisper tiers (ligero, equilibrado, preciso) download with full metadata (config + weights) to avoid missing-file errors during transcription.
+- Setup now targets Python 3.12 + `uv` by default and recognizes locally downloaded MLX archives when listing models.
+- Packaging: regenerated the offline archive (`three-amigos-offline-v1.3.zip`) and split into GitHub-sized parts (`.partaa`, `.partab`, `.partac`).
+
+### Checksums
+- `three-amigos-offline-v1.3.zip`: `23da50465e104c32c63929d0245e8efc949fd50c615c49d6e7dfdea02ac6a7ea`
+- `three-amigos-offline-v1.3.zip.partaa`: `f665ab26b7e1e8f876cebb8ada4ba6aaae652c0e40a33b37fb1176f738ac813c`
+- `three-amigos-offline-v1.3.zip.partab`: `129828d989248dd183128aa7a07c7b85dfd67610b919a7aee2124412b3ebbd0e`
+- `three-amigos-offline-v1.3.zip.partac`: `a863136978586684036562c9c786d6efe0376d65783f0d32c9d7a865ba7118f8`
 
 ## v1.2.0 — 2025-11-14
 - Upgraded the bundled Parakeet amigo to `parakeet-tdt-0.6b-v3` for better accuracy and stability on Apple Silicon.

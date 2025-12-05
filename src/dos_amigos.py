@@ -72,8 +72,12 @@ class DosAmigos:
         for root in candidate_roots:
             model_dir = root / self.model_config["local_dir"]
             if model_dir.exists():
-                model_files = list(model_dir.rglob("*.safetensors")) + list(model_dir.rglob("*.mlx"))
-                if model_files:
+                # Require a config plus some weight-bearing file to avoid half-downloaded dirs
+                config_file = model_dir / "config.json"
+                has_weights = any(
+                    model_dir.rglob(pattern) for pattern in ("*.safetensors", "*.mlx", "*.npz", "weights*")
+                )
+                if config_file.exists() and has_weights:
                     print(f"Found local {self.amigo_type} model at: {model_dir}")
                     return str(model_dir)
         return None
@@ -349,10 +353,9 @@ Examples:
             print(f"\nModels directory: {models_dir}")
             for key, config in MODEL_MAP.items():
                 model_path = models_dir / config["local_dir"]
-                if model_path.exists() and (
-                    any(model_path.rglob("*.safetensors"))
-                    or any(model_path.rglob("*.mlx"))
-                ):
+                has_config = (model_path / "config.json").exists()
+                has_files = any(model_path.rglob("*"))
+                if model_path.exists() and has_config and has_files:
                     size_mb = sum(f.stat().st_size for f in model_path.rglob("*") if f.is_file()) / (1024 * 1024)
                     print(f"  {key} ({model_path.name}): {size_mb:.1f} MB")
                 else:

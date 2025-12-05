@@ -1,11 +1,11 @@
-# 🎙️ Dos Amigos Offline
+# 🎙️ Three Amigos Offline
 
 Three powerful amigos for automatic speech recognition! Run push-to-talk, auto-paste ASR from terminal, using offline open source MLX Whisper tiers optimized for Mac.
 
-## 🆕 What's New in v1.2
-- Bundled Parakeet Amigo now ships with the upgraded `parakeet-tdt-0.6b-v3` checkpoint for extra accuracy.
-- Parakeet transcripts automatically strip filler “um” words before being pasted.
-- Regenerated the offline archive (`dos-amigos-offline-v1.2.zip`) split into GitHub-sized parts.
+## 🆕 What's New in v1.3
+- Renamed project to **Three Amigos Offline** and refreshed download naming.
+- All three MLX Whisper tiers now download with full metadata (config + weights) to avoid partial-model errors.
+- Setup targets Python 3.12 + `uv` by default; model listing recognizes local MLX archives correctly.
 - Read the full [release notes](RELEASE_NOTES.md).
 
 ## 🧑‍🤝‍🧑 The Three Amigos
@@ -23,18 +23,19 @@ Three powerful amigos for automatic speech recognition! Run push-to-talk, auto-p
 ## 🚀 Download and Setup Instructions
 
 ### Download
-👉 [Download from releases](https://github.com/laywen-sashe/dos-amigos-offline/releases).
+👉 [Download from releases](https://github.com/laywen-sashe/three-amigos-offline/releases).
 
 ### Setup
-1. Due to GitHub's 2GB limit, download both parts:
-1. 📦 dos-amigos-offline-v1.2.zip.partaa
-2. 📦 dos-amigos-offline-v1.2.zip.partab
-3. Combine both parts `cat dos-amigos-offline-v1.2.zip.part* > dos-amigos-offline-v1.2.zip`
-4. Extract `unzip dos-amigos-offline-v1.2.zip`
-5. Change directories `cd dos-amigos-offline-v1.2`
-6. Run `uv run python src/scripts/setup_offline.py`
-7. Activate `source .venv/bin/activate`
-7. Run `uv run python src/dos_amigos.py`
+1. Due to GitHub's 2GB limit, download all parts:
+   - 📦 `three-amigos-offline-v1.3.zip.partaa`
+   - 📦 `three-amigos-offline-v1.3.zip.partab`
+   - 📦 `three-amigos-offline-v1.3.zip.partac`
+2. Combine parts: `cat three-amigos-offline-v1.3.zip.part* > three-amigos-offline-v1.3.zip`
+3. Extract: `unzip three-amigos-offline-v1.3.zip`
+4. Change directories: `cd three-amigos-offline-v1.3`
+5. Run setup: `uv run python src/scripts/setup_offline.py`
+6. Activate: `source .venv/bin/activate`
+7. Launch: `uv run python src/dos_amigos.py`
 8. Press Right Option to record.
 9. Press Right Option again to stop recording and paste your recorded text!
 
