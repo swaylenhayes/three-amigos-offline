@@ -1,6 +1,6 @@
 # 🎙️ Dos Amigos Offline
 
-Two powerful amigos for automatic speech recognition! Run push-to-talk, auto-paste ASR from terminal, using offline open source MLX models (Whisper Small and Parakeet).
+Three powerful amigos for automatic speech recognition! Run push-to-talk, auto-paste ASR from terminal, using offline open source MLX Whisper tiers optimized for Mac.
 
 ## 🆕 What's New in v1.2
 - Bundled Parakeet Amigo now ships with the upgraded `parakeet-tdt-0.6b-v3` checkpoint for extra accuracy.
@@ -8,14 +8,17 @@ Two powerful amigos for automatic speech recognition! Run push-to-talk, auto-pas
 - Regenerated the offline archive (`dos-amigos-offline-v1.2.zip`) split into GitHub-sized parts.
 - Read the full [release notes](RELEASE_NOTES.md).
 
-## 🧑‍🤝‍🧑 The Two Amigos
+## 🧑‍🤝‍🧑 The Three Amigos
 
 - **🪽 El Ligero**
-	- Lightweight & fast
-	- Model: [whisper-small-mlx](https://huggingface.co/mlx-community/whisper-small-mlx) (~500MB)
+        - Lightweight & fastest
+        - Model: [mlx-community/whisper-small.en-mlx-q4](https://huggingface.co/mlx-community/whisper-small.en-mlx-q4)
+- **⚖️  El Equilibrado (default)**
+        - Balanced speed and quality
+        - Model: [mlx-community/whisper-large-v3-turbo-q4](https://huggingface.co/mlx-community/whisper-large-v3-turbo-q4)
 - **🎯 El Preciso**
-	- Precise & fast, maximum accuracy
-	- Model: [parakeet-tdt-0.6b-v3](https://huggingface.co/mlx-community/parakeet-tdt-0.6b-v3) (~2.4GB)
+        - Maximum accuracy
+        - Model: [mlx-community/whisper-large-v3-turbo](https://huggingface.co/mlx-community/whisper-large-v3-turbo)
 
 ## 🚀 Download and Setup Instructions
 
@@ -34,6 +37,28 @@ Two powerful amigos for automatic speech recognition! Run push-to-talk, auto-pas
 7. Run `uv run python src/dos_amigos.py`
 8. Press Right Option to record.
 9. Press Right Option again to stop recording and paste your recorded text!
+
+### Model options
+
+Use the `--model` flag (default: `equilibrado`) when launching:
+
+```bash
+uv run python src/dos_amigos.py --model ligero
+uv run python src/dos_amigos.py --model equilibrado
+uv run python src/dos_amigos.py --model preciso
+```
+
+| Flag           | Repo                                       | Local folder            | Notes                      |
+| -------------- | ------------------------------------------ | ----------------------- | -------------------------- |
+| `ligero`       | `mlx-community/whisper-small.en-mlx-q4`    | `./models/ligero`       | Lightest and fastest       |
+| `equilibrado`* | `mlx-community/whisper-large-v3-turbo-q4`  | `./models/equilibrado`  | Default balanced option    |
+| `preciso`      | `mlx-community/whisper-large-v3-turbo`     | `./models/preciso`      | Highest accuracy (largest) |
+
+Download all three tiers without symlinks for easy offline packaging:
+
+```bash
+uv run python src/scripts/download_models.py
+```
 
 ## 📄 License
 
